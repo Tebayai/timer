@@ -1,38 +1,113 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container{
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 5rem;
+}
+
+/* timer */
+
+.containerTimer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.TimerGlobal{
+  font-size: 5rem;
+  margin-top: 2rem;
+}
+
+/* btn */
+
+button{
+  background-color: #c3cedd;
+  border: none;
+  border-radius: 0.4rem;
+  color: black;
+  padding: 1rem 2.5rem;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btnChoix{
+  position: absolute;
+}
+
+.top{
+  top: -2rem;
+}
+
+.left{
+  right: -4.5rem;
+}
+
+.bottom{
+  bottom: -2rem;
+}
+
+.right{
+  left: -4.5rem;
+}
+
+/* roue minuteur */
+
+.selectTemp{
+  position: relative;
+  width: 20rem;
+  height: 20rem;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.roue{
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background-color: white;
+  border : 0.3rem solid black;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform:
+    rotate(calc(var(--i) * 30deg))
+    translateY(-7rem)
+    rotate(calc(var(--i) * -30deg));
+  transform-origin: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-left: -0.3rem;
+  margin-top: -0.8rem;
+  cursor: pointer;
+}
+
+.trait{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.2rem;
+  height: 7rem;
+  background-color: black;
+  transform-origin: center;
+}
+
+.containerTrait{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  animation: rotate 60s infinite linear;
+}
+
+@keyframes rotate{
+  100%{
+    transform: rotateZ(360deg);
   }
 }

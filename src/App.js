@@ -6,6 +6,7 @@ export default function TimeRanges(){
   const [isStart, setIsStart] = useState(false);
   const [remainTime, setRemainTime] = useState(0);
   let timeoutRef = useRef(null);
+  const numbers = Array.from({length:12},(_,i) => i +1); //arry.from creer un tableau a partir d'un objet, 12 case vide , la fonction mapping prend 2 props _ car on l'utilise pas "inutile" et i l'index i +1 permet de commencer a 1 et pas à 0
   
   function choixTimer(temp, isBtn = true){
 
@@ -40,18 +41,24 @@ export default function TimeRanges(){
 
     return (
     <div className="container">
-      <div className="TimerGlobal">{timer}
+      <div className="containerTimer">
+        <div className="TimerGlobal">{timer}</div>
+        <button className="goBtn" onClick={() => setIsStart(!isStart)}>{ !isStart ? "Lance le temps": "Mettre en pause" }</button>
       </div>
       <div className="TimerSelect">
         <div className="selectTemp">
-            <button className="goBtn" onClick={() => setIsStart(!isStart)}>{ !isStart ? "Lance le temps": "Mettre en pause" }</button>
-            <br></br>
-            <button className="btnChoix" onClick={() => choixTimer(720000)}>Dur</button>
-            <button className="btnChoix" onClick={() => choixTimer(180000)}>oeuf cocottte</button>
-            <button className="btnChoix" onClick={() => choixTimer(360000)}>mollet</button>
-            <button className="btnChoix" onClick={() => choixTimer(540000)}>au plat</button>
-        </div>
-        <div className="Roue">
+            <div className="roue">
+              {numbers.map((minute) => ( // ici on parcourt le tableau numbers créé plus haut, pour chaque élément on le nomme "minute"
+              <div key={minute} className="number" style={{ "--i": minute}} onClick={() => choixTimer(minute * 60000)}>{minute}</div>
+              ))}
+            </div>
+            <div className="containerTrait">
+              <div className="trait"></div>
+            </div>
+            <button className="btnChoix top" onClick={() => choixTimer(720000)}>1</button>
+            <button className="btnChoix left" onClick={() => choixTimer(180000)}>2</button>
+            <button className="btnChoix bottom" onClick={() => choixTimer(360000)}>3</button>
+            <button className="btnChoix right" onClick={() => choixTimer(540000)}>4</button>
         </div>
       </div>
     </div>
