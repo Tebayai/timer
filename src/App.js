@@ -7,7 +7,8 @@ export default function TimeRanges(){
   const [remainTime, setRemainTime] = useState(0);
   let timeoutRef = useRef(null);
   const numbers = Array.from({length:12},(_,i) => i +1); //arry.from creer un tableau a partir d'un objet, 12 case vide , la fonction mapping prend 2 props _ car on l'utilise pas "inutile" et i l'index i +1 permet de commencer a 1 et pas à 0
-  
+
+
   function choixTimer(temp, isBtn = true){
 
     if(isBtn && isStart){
@@ -20,6 +21,7 @@ export default function TimeRanges(){
 
     setTimer(`${min.toString().padStart(2, "0")}:${sec.toString().padStart(2, "0")}`)
     setRemainTime(temp);
+
   }
 
   useEffect(() => {
@@ -52,7 +54,7 @@ export default function TimeRanges(){
               <div key={minute} className="number" style={{ "--i": minute}} onClick={() => choixTimer(minute * 60000)}>{minute}</div>
               ))}
             </div>
-            <div className="containerTrait">
+            <div className="containerTrait"  style={{transform : `rotateZ(${(remainTime / 1000 / 60) * 30}deg)`}}>
               <div className="trait"></div>
             </div>
             <button className="btnChoix top" onClick={() => choixTimer(720000)}>1</button>

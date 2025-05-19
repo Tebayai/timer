@@ -84,30 +84,24 @@ button{
   transform-origin: center;
   font-size: 1.2rem;
   font-weight: bold;
-  margin-left: -0.3rem;
+  margin-left: -0.9rem;
   margin-top: -0.8rem;
   cursor: pointer;
+  /*toute la meme largeur pour que 12 et 1 soit au meme endroit*/
+  width: 2rem;
 }
 
 .trait{
-  position: absolute;
-  top: 50%;
-  left: 50%;
   width: 0.2rem;
   height: 7rem;
   background-color: black;
-  transform-origin: center;
 }
 
 .containerTrait{
   position: absolute;
-  top: 50%;
+  bottom: 50%;
   left: 50%;
-  animation: rotate 60s infinite linear;
+  transform-origin:bottom center ;
+  transition: transform linear;
 }
 
-@keyframes rotate{
-  100%{
-    transform: rotateZ(360deg);
-  }
-}
