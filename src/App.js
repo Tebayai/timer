@@ -24,6 +24,14 @@ export default function TimeRanges(){
 
   }
 
+  function fermeModale(){
+    setRemainTime(0);
+    setIsStart(false);
+    clearTimeout(timeoutRef.current);
+    const modale = document.querySelector(".modaleTimer");
+    modale.style.display = "none";
+  }
+
   useEffect(() => {
     if (isStart) {
       timeoutRef.current = setTimeout(() => {
@@ -61,6 +69,12 @@ export default function TimeRanges(){
             <button className="btnChoix left" onClick={() => choixTimer(180000)}>2</button>
             <button className="btnChoix bottom" onClick={() => choixTimer(360000)}>3</button>
             <button className="btnChoix right" onClick={() => choixTimer(540000)}>4</button>
+        </div>
+      </div>
+      <div className="modaleTimer" style={{display: remainTime === 0 ? "flex" : "none"}}>
+        <div className="containerModale">
+          <div className="timerEndText">Fin du temps</div>
+          <button className="btnEnd" onClick={() => fermeModale()}>fermer la modale</button>
         </div>
       </div>
     </div>
